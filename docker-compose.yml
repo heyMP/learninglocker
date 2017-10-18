@@ -2,3 +2,13 @@ version: '3'
 services:
   process-manager:
     build: ./learninglocker
+    links:
+      - redis
+  xapi:
+    build: ./xapi-service
+    ports:
+      - '8080:80'
+    links:
+      - redis
+  redis:
+    image: redis
