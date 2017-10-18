@@ -15,3 +15,5 @@ RUN chmod 644 /usr/share/unicode/UnicodeData.txt
 
 WORKDIR /learninglocker/
 RUN yarn install
+
+# RUN yarn build-all
