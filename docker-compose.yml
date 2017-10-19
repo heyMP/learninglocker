@@ -1,0 +1,11 @@
+version: '3.2'
+services:
+  ll:
+    build:
+      context: .
+      dockerfile: ll.Dockerfile
+    # volumes:
+    #   - ./app:/app
+    #   - type: volume
+    #     source: app-code
+    #     target: /app
