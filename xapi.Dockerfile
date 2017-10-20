@@ -14,16 +14,16 @@ RUN npm install -g pm2
 RUN pm2 install pm2-logrotate
 RUN pm2 set pm2-logrotate:compress true
 
-# LearningLocker
-WORKDIR /learninglocker
-COPY ./learninglocker/package.json .
-COPY ./learninglocker/yarn.lock .
-RUN yarn install
+# XAPI-service
+WORKDIR /xapi-service
+COPY ./xapi-service/package-lock.json .
+COPY ./xapi-service/package.json .
+RUN npm install
 
-COPY ./learninglocker .
-RUN yarn build-all
+COPY ./xapi-service .
+RUN npm run build
 
-RUN pm2 start pm2/all.json
+RUN pm2 start pm2/xapi.json
 
 EXPOSE 3000
 EXPOSE 8080
