@@ -4,12 +4,14 @@ start:
 	docker-compose build
 	docker-compose up
 
+# Remove ANY containers and volumes associated with this compose-up.
 clean:
-	docker-compose rm
-	docker volume prune
+	docker-compose down --remove-orphans -v
 
+# For development. VERY DESTRUCTIVE!
 rebuild:
-	docker-compose rm
-	docker volume prune
-	docker-compose build
-	docker-compose up
+	make clean
+	make start
+
+top:
+	docker-compose top

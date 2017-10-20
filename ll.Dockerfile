@@ -22,8 +22,3 @@ RUN yarn install
 
 COPY ./learninglocker .
 RUN yarn build-all
-
-CMD [ "pm2", "start", "/learninglocker/pm2/all.json" ]
-
-EXPOSE 3000
-EXPOSE 8080

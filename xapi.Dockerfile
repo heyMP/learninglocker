@@ -22,9 +22,3 @@ RUN npm install
 
 COPY ./xapi-service .
 RUN npm run build
-
-CMD [ "pm2", "start", "/xapi-service/pm2/xapi.json" ]
-
-EXPOSE 3000
-EXPOSE 8080
-# RUN apt-get -y install curl git python build-essential xvfb apt-transport-https

@@ -1,23 +1,27 @@
 version: '3.2'
 services:
-  ll:
+  ll-build:
     build:
       context: .
       dockerfile: ll.Dockerfile
+    volumes:
+      - ll-build:/learninglocker
+  # xapi-build:
+  #   build:
+  #     context: .
+  #     dockerfile: xapi.Dockerfile
+  ll-ui:
+    image: node:6
     ports:
-      - "8000:8000"
-    stdin_open: true
-    tty: true
-  xapi:
-    build:
-      context: .
-      dockerfile: xapi.Dockerfile
-  # mongo:
-  #   image: mongo:3
-  # redis:
-  #   image: redis:4
-    # volumes:
-    #   - ./app:/app
-    #   - type: volume
-    #     source: app-code
-    #     target: /app
+      - "3000:3000"
+    volumes:
+      - ll-build:/learninglocker
+    working_dir: /learninglocker
+    command: node ui/dist/server
+    depends_on:
+      - ll-build
+      - mongo
+  mongo:
+    image: mongo
+volumes:
+  ll-build:
