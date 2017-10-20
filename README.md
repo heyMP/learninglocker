@@ -21,3 +21,8 @@ Clean up and start:
 ```
 make rebuild
 ```
+
+## Instructions
+
+- Start the containers with either `make start` or `mark rebuild`.
+- Visit the Learning Locker UI at localhost:3000
