@@ -6,14 +6,16 @@ services:
       dockerfile: ll.Dockerfile
     ports:
       - "8000:8000"
+    stdin_open: true
+    tty: true
   xapi:
     build:
       context: .
       dockerfile: xapi.Dockerfile
-  mongo:
-    image: mongo:3
-  redis:
-    image: redis:4
+  # mongo:
+  #   image: mongo:3
+  # redis:
+  #   image: redis:4
     # volumes:
     #   - ./app:/app
     #   - type: volume

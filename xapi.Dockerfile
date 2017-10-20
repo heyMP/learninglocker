@@ -23,7 +23,7 @@ RUN npm install
 COPY ./xapi-service .
 RUN npm run build
 
-RUN pm2 start pm2/xapi.json
+CMD [ "pm2", "start", "/xapi-service/pm2/xapi.json" ]
 
 EXPOSE 3000
 EXPOSE 8080

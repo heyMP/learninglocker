@@ -23,8 +23,7 @@ RUN yarn install
 COPY ./learninglocker .
 RUN yarn build-all
 
-RUN pm2 start pm2/all.json
+CMD [ "pm2", "start", "/learninglocker/pm2/all.json" ]
 
 EXPOSE 3000
 EXPOSE 8080
-# RUN apt-get -y install curl git python build-essential xvfb apt-transport-https
