@@ -14,19 +14,6 @@ services:
     image: node:6
     ports:
       - "3000:3000"
-    environment:
-      - UI_PORT=3000
-      - API_PORT=8080
-      - APP_SECRET=secret
-      - MONGODB_PATH=mongodb://mongo:27017/learninglocker_v2
-      - MONGODB_TEST_PATH=mongodb://mongo:27017/llv2tests
-      - REDIS_HOST=redis
-      - REDIS_PORT=6379
-      - REDIS_DB=0
-      - REDIS_PREFIX=LEARNINGLOCKER
-      - QUEUE_PROVIDER=REDIS
-      - QUEUE_NAMESPACE=DEV
-      - FS_REPO=local
     volumes:
       - ll-build:/learninglocker
     working_dir: /learninglocker
