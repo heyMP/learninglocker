@@ -10,9 +10,6 @@ services:
   #   build:
   #     context: .
   #     dockerfile: xapi.Dockerfile
-  ll-devel:
-    volumes:
-      - ./learninglocker:/learninglocker
   ll-ui:
     image: node:6
     ports:
