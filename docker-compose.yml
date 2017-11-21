@@ -10,6 +10,9 @@ services:
   #   build:
   #     context: .
   #     dockerfile: xapi.Dockerfile
+  ll-devel:
+    volumes:
+      - ./learninglocker:/learninglocker
   ll-ui:
     image: node:6
     ports:
@@ -21,7 +24,29 @@ services:
     depends_on:
       - ll-build
       - mongo
+  ll-api:
+    image: node:6
+    ports:
+      - "8080:8080"
+    volumes:
+      - ll-build:/learninglocker
+    working_dir: /learninglocker
+    command: node api/dist/server
+    depends_on:
+      - ll-build
+      - mongo
+  ll-worker:
+    image: node:6
+    volumes:
+      - ll-build:/learninglocker
+    working_dir: /learninglocker
+    command: node worker/dist/server
+    depends_on:
+      - ll-build
+      - mongo
   mongo:
     image: mongo
+  redis:
+    image: redis
 volumes:
   ll-build:

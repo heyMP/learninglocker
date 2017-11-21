@@ -15,3 +15,6 @@ rebuild:
 
 top:
 	docker-compose top
+
+create-admin:
+	docker-compose exec ll-api node cli/dist/server createSiteAdmin mgp140@gmail.com elmsln root
